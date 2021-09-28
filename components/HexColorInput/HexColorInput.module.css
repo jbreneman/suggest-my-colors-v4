@@ -1,0 +1,14 @@
+.hexColorInput {
+    border-radius: calc(var(--corners) * 0.66666);
+    background-color: white;
+    border: 1px solid var(--grey-100);
+    padding: var(--spacing-200) calc(var(--spacing-200) * 1.5);
+    width: 5.25rem;
+}
+
+.label {
+    margin-right: var(--spacing-200);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
