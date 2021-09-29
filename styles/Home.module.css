@@ -5,7 +5,8 @@
         'header header'
         'sidebar main'
         'footer footer';
-    gap: var(--spacing-500);
+    grid-template-columns: 22rem 1fr;
+    gap: var(--spacing-400);
 }
 
 .sidebar {
@@ -13,7 +14,7 @@
     width: 22rem;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-500);
+    gap: var(--spacing-400);
 }
 
 .pickerSection {
