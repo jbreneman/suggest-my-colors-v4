@@ -6,26 +6,29 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    transition: z-index 0.01s ease 0.24s;
 }
 
 .gridItem::before {
     content: '';
     position: absolute;
     z-index: -1;
-    left: calc(var(--spacing-300) * -1);
-    top: calc(var(--spacing-300) * -1);
-    width: calc(100% + var(--spacing-600));
-    height: calc(100% + var(--spacing-600));
+    left: -4px;
+    top: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
     background-color: inherit;
-    transform: scale3d(0.875, 0.75, 0.75);
+    transform: scale3d(1, 1, 1);
     border-radius: calc(var(--corners) * 1.5);
-    transition: transform 0.24s ease, border-color 0.2s ease;
+    transition: transform 0.24s ease;
     border: 4px solid transparent;
+    background-clip: padding-box;
 }
 
 .gridItem:hover,
 .gridItem:focus-within {
     z-index: 1;
+    transition: z-index 0.01s ease;
 }
 
 .gridItem:hover .colorPicker,
@@ -35,7 +38,7 @@
 
 .gridItem:hover::before,
 .gridItem:focus-within::before {
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(1.25, 1.25, 1);
     border-color: white;
 }
 
