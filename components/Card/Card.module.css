@@ -4,3 +4,8 @@
     border-radius: var(--corners);
     padding: var(--spacing-400);
 }
+
+.card p {
+    margin: 0;
+    line-height: 1.6;
+}

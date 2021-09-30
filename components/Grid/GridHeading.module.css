@@ -1,0 +1,6 @@
+.gridHeading {
+    margin: 0;
+    padding: var(--spacing-200) 0;
+    color: var(--grey-700);
+    line-height: 1.1;
+}

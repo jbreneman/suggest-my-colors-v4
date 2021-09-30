@@ -2,7 +2,6 @@ import styles from './GridItem.module.css';
 import { buildClasses } from '../../util/classes';
 import Card from '../Card';
 import { getContrast } from '../../util/getAccessibleTextColor';
-import { MouseEvent } from 'react';
 
 const GridItem = ({
     className,

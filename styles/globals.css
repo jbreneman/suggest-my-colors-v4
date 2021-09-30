@@ -1,5 +1,6 @@
 :root {
     --grey-100: #e8e8e8;
+    --grey-700: #656565;
     --corners: 0.75rem;
 
     --spacing-100: 0.25rem;
@@ -11,6 +12,11 @@
     --spacing-700: 3rem;
     --spacing-800: 5rem;
     --spacing-900: 7rem;
+}
+
+::selection {
+    background-color: var(--grey-700);
+    color: white;
 }
 
 html,

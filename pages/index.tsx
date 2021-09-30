@@ -4,9 +4,9 @@ import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
 import { HexColorPicker } from 'react-colorful';
 import HexColorInput from '../components/HexColorInput';
-import Grid from '../components/Grid';
+import Grid from '../components/Grid/Grid';
 import { useThrottle } from '@react-hook/throttle';
-import GridItem from '../components/GridItem/GridItem';
+import GridItem from '../components/Grid/GridItem';
 import {
     getBlueShift,
     getGreenShift,
@@ -14,15 +14,21 @@ import {
     getOpposites,
     getRedShift,
 } from '../util/appColors';
+import GridHeading from '../components/Grid/GridHeading';
 
 const Home: NextPage = () => {
-    const [color, setColor] = useThrottle('#aabbcc');
+    const [color, setColor] = useThrottle('#1FAAB6');
 
     const colors = [
+        { text: 'Opposites', key: 'opposites' },
         ...getOpposites(color),
+        { text: 'Half opposites', key: 'half-opposites' },
         ...getHalfOpposites(color),
+        { text: 'Red shift', key: 'red-shift' },
         ...getRedShift(color),
+        { text: 'Green shift', key: 'green-shift' },
         ...getGreenShift(color),
+        { text: 'Blue shift', key: 'blue-shift' },
         ...getBlueShift(color),
     ];
 
@@ -56,18 +62,31 @@ const Home: NextPage = () => {
                     />
                 </Card>
                 <Card className={styles.sidebar} tag="article">
-                    Test
+                    <p>
+                        This is a project I keep rewriting to learn new things.
+                        It takes a single color as an input and applies some
+                        math to the individual RGB channels to give you a set of
+                        colors that are mathematically related.
+                    </p>
                 </Card>
             </section>
 
             <Grid tag="main" className={styles.main}>
-                {colors.map((item: { key: string; color: string }) => (
-                    <GridItem
-                        color={item.color}
-                        key={item.key}
-                        onSelectColor={setColor}
-                    />
-                ))}
+                {colors.map(
+                    (item: { key: string; color: string; text?: string }) => {
+                        if (item.text) {
+                            return <GridHeading text={item.text} />;
+                        }
+
+                        return (
+                            <GridItem
+                                color={item.color}
+                                key={item.key}
+                                onSelectColor={setColor}
+                            />
+                        );
+                    },
+                )}
             </Grid>
 
             <footer className={styles.footer}>
