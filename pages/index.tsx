@@ -34,6 +34,12 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <header className={styles.header}>
+                <h1 className={styles.logo}>
+                    suggestmycolors<sup className={styles.logoSup}>v4</sup>
+                </h1>
+            </header>
+
             <section className={styles.sidebar}>
                 <Card className={styles.pickerSection} tag="article">
                     <div className={styles.picker}>
@@ -64,7 +70,12 @@ const Home: NextPage = () => {
                 ))}
             </Grid>
 
-            <footer className={styles.footer}></footer>
+            <footer className={styles.footer}>
+                Made by <a href="https://jessebreneman.com">Jesse Breneman</a>.{' '}
+                <a href="https://github.com/jbreneman/suggest-my-colors-v4">
+                    View on Github
+                </a>
+            </footer>
         </div>
     );
 };

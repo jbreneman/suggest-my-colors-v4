@@ -5,3 +5,9 @@
     grid-auto-flow: column;
     gap: var(--spacing-100) var(--spacing-300);
 }
+
+@media (max-width: 1060px) {
+    .grid {
+        gap: var(--spacing-100) var(--spacing-200);
+    }
+}
