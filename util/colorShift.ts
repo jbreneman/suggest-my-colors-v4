@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 const hex2rgb: Function = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
@@ -90,5 +92,10 @@ export const mutateColor: Function = (
             b: mutate.b + mutateBy.b,
         };
     }
-    return output;
+    return output.map((color) => {
+        return {
+            key: uuid(),
+            color,
+        };
+    });
 };

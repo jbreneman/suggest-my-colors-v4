@@ -1,3 +1,101 @@
 .gridItem {
+    position: relative;
+    z-index: 0;
     aspect-ratio: 1.5 / 1;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.gridItem::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: calc(var(--spacing-300) * -1);
+    top: calc(var(--spacing-300) * -1);
+    width: calc(100% + var(--spacing-600));
+    height: calc(100% + var(--spacing-600));
+    background-color: inherit;
+    transform: scale3d(0.875, 0.75, 0.75);
+    border-radius: calc(var(--corners) * 1.5);
+    transition: transform 0.24s ease, border-color 0.2s ease;
+    border: 4px solid transparent;
+}
+
+.gridItem:hover,
+.gridItem:focus-within {
+    z-index: 1;
+}
+
+.gridItem:hover .colorPicker,
+.gridItem:focus-within .colorPicker {
+    opacity: 1;
+}
+
+.gridItem:hover::before,
+.gridItem:focus-within::before {
+    transform: scale3d(1, 1, 1);
+    border-color: white;
+}
+
+.colorPicker {
+    position: absolute;
+    left: 0;
+    top: var(--spacing-200);
+    color: inherit;
+    appearance: none;
+    border: none;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.24s ease;
+    cursor: pointer;
+    padding: 0;
+    padding-top: var(--spacing-100);
+    border-radius: calc(var(--corners) / 2);
+}
+
+.colorPicker:hover .colorDrop {
+    animation: color-drop 2s ease-out infinite;
+}
+
+.colorPicker:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px currentColor;
+}
+
+.colorPicker:focus .colorDrop {
+    animation: color-drop 2s ease-out infinite;
+}
+
+.colorPicker::before {
+    content: '';
+    position: absolute;
+    left: -25%;
+    top: -50%;
+    width: 150%;
+    height: 200%;
+}
+
+.colorPickerIcon {
+    width: 1.5rem;
+    height: 1.25rem;
+}
+
+@keyframes color-drop {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
 }

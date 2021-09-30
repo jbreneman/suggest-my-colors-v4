@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { HexColorPicker } from 'react-colorful';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
+import { HexColorPicker } from 'react-colorful';
 import HexColorInput from '../components/HexColorInput';
 import Grid from '../components/Grid';
-import { useState } from 'react';
+import { useThrottle } from '@react-hook/throttle';
 import GridItem from '../components/GridItem/GridItem';
 import {
     getBlueShift,
@@ -16,7 +16,7 @@ import {
 } from '../util/appColors';
 
 const Home: NextPage = () => {
-    const [color, setColor] = useState('#aabbcc');
+    const [color, setColor] = useThrottle('#aabbcc');
 
     const colors = [
         ...getOpposites(color),
@@ -55,8 +55,12 @@ const Home: NextPage = () => {
             </section>
 
             <Grid tag="main" className={styles.main}>
-                {colors.map((c: string) => (
-                    <GridItem color={c} key={c} />
+                {colors.map((item: { key: string; color: string }) => (
+                    <GridItem
+                        color={item.color}
+                        key={item.key}
+                        onSelectColor={setColor}
+                    />
                 ))}
             </Grid>
 
